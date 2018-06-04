@@ -1,13 +1,16 @@
 
-
-
 class HeaderData {
+  final String imagePath;
+
+  HeaderData(this.imagePath);
+}
+
+class InfoData {
 
   final String time;
   final String description;
 
-  HeaderData(this.time, this.description);
-
+  InfoData(this.time, this.description);
 }
 
 class ArtistScheduleData {
