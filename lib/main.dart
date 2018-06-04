@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/AnimatedPageRoute.dart';
+import 'package:iheart_festival/schedule/SchedulePage.dart';
 
 void main() => runApp(new FestivalApp());
 
@@ -20,7 +21,7 @@ class _FestivalAppState extends State<FestivalApp> {
     "/": () => AnimatedPageRoute(
       transition: (anim, child) => child,
       builder: (context) => Center(
-        child: Text("Schedule",style: Theme.of(context).textTheme.body1,),
+        child: SchedulePage(),
       ),
     ),
     "map": () => AnimatedPageRoute(
