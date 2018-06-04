@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iheart_festival/schedule/ScheduleData.dart';
 import 'package:iheart_festival/schedule/schedule_list_item.dart';
 
-
 class SchedulePage extends StatefulWidget {
 
   @override
@@ -11,17 +10,27 @@ class SchedulePage extends StatefulWidget {
 }
 
 class _SchedulePageState extends State<SchedulePage> {
-
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: ListView(
-        children: [
-
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            expandedHeight: 250.0,
+            floating: true,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text("TITLE APP BAR"),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) => ListTile(
+              title: Text("List item $index"),
+            )),
+          )
         ],
       ),
     );
-  }
 
 }
 
@@ -33,3 +42,35 @@ ArtistScheduleData data = ArtistScheduleData(
     "https://cps-static.rovicorp.com/3/JPG_400/MI0004/057/MI0004057529.jpg?partner=allrovi.com",
     true
 );
+
+
+
+/*
+return Scaffold(
+//      body: CustomScrollView(
+//        slivers: <Widget>[
+//          SliverAppBar(
+//            pinned: true,
+//            expandedHeight: 250.0,
+//            flexibleSpace: FlexibleSpaceBar(
+//              title: Text("Title"),
+//              //background: ,
+//            ),
+//          ),
+//
+//          SliverPadding(
+//            padding: EdgeInsets.all(16.0),
+//            sliver: SliverList(
+//              delegate: SliverChildListDelegate([
+//                Text("other title"),
+//                Text("body"),
+//                Text("other info"),
+//              ]),
+//            ),
+//          )
+//        ],
+//      ),
+//    );
+
+
+ */
