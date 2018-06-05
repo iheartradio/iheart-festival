@@ -1,10 +1,10 @@
-class LocalInfoItemData {
+import 'package:iheart_festival/schedule/ListItem.dart';
+
+class LocalInfoItemData implements ListItem {
 
   final String date;
   final String stage;
   final String venue;
-  final String buttonTitle;
-  final String map;
 
-  LocalInfoItemData(this.date, this.stage, this.venue, this.buttonTitle, this.map);
+  const LocalInfoItemData(this.date, this.stage, this.venue);
 }
