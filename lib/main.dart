@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/AnimatedPageRoute.dart';
+import 'package:iheart_festival/common/Fab.dart';
+import 'package:iheart_festival/common/Gradients.dart';
 import 'package:iheart_festival/map/MapPage.dart';
+import 'package:iheart_festival/qr/QRPage.dart';
 import 'package:iheart_festival/schedule/SchedulePage.dart';
 
 void main() => runApp(new FestivalApp());
@@ -30,12 +33,7 @@ class _FestivalAppState extends State<FestivalApp> {
         ),
     "feed": () => AnimatedPageRoute(
           transition: (anim, child) => child,
-          builder: (context) => Center(
-                child: Text(
-                  "Feed",
-                  style: Theme.of(context).textTheme.body1,
-                ),
-              ),
+          builder: (context) => QRPage(),
         ),
     "music": () => AnimatedPageRoute(
           transition: (anim, child) => child,
@@ -66,7 +64,12 @@ class _FestivalAppState extends State<FestivalApp> {
 //          ),
 //        ),
         bottomNavigationBar: _buildBottomNavigationBar(context),
-        floatingActionButton: _FAB(context),
+        floatingActionButton: FAB(
+          onTap: (){
+
+          },
+          gradientColors: PINK,
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );
@@ -82,30 +85,6 @@ class _FestivalAppState extends State<FestivalApp> {
             child: Icon(Icons.card_giftcard)),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(23.0)),
-        ),
-      ),
-    );
-  }
-
-  Widget _FAB(BuildContext context) {
-    return new RotationTransition(
-      turns: AlwaysStoppedAnimation(45 / 360),
-      child: new GestureDetector(
-        onTap: (){
-
-        },
-        child: Container(
-          width: 56.0,
-          height: 56.0,
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow()
-            ],
-            borderRadius: BorderRadius.all(Radius.circular(23.0)),
-            gradient: LinearGradient(
-              colors: [const Color(0xFFFF7676), const Color(0xFFF54EA2)]
-            )
-          ),
         ),
       ),
     );
