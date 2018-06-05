@@ -4,19 +4,7 @@ import 'package:iheart_festival/common/Fab.dart';
 import 'package:iheart_festival/common/Gradients.dart';
 import 'package:iheart_festival/map/MapPage.dart';
 import 'package:iheart_festival/qr/QRPage.dart';
-
-import 'package:iheart_festival/LocalInfoItemData.dart';
-import 'package:iheart_festival/map/MapPage.dart';
-import 'package:iheart_festival/LocalInfoItem.dart';
-import 'package:iheart_festival/schedule/ListItem.dart';
-import 'package:iheart_festival/schedule/ScheduleData.dart';
-import 'package:iheart_festival/schedule/ScheduleHeader.dart';
-import 'package:iheart_festival/schedule/ScheduleListItemSimple.dart';
-
 import 'package:iheart_festival/schedule/SchedulePage.dart';
-import 'package:iheart_festival/schedule/ScheduleViewModel.dart';
-import 'package:iheart_festival/schedule/TestTab.dart';
-import 'package:iheart_festival/schedule/schedule_list_item.dart';
 
 void main() => runApp(new FestivalApp());
 
@@ -62,6 +50,7 @@ class _FestivalAppState extends State<FestivalApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+          fontFamily: 'Avenir',
           iconTheme: IconThemeData(color: const Color(0xFFFF7676)),
           primaryColor: const Color(0xFFFF7676),
           accentColor: const Color(0xFFF54EA2)),
