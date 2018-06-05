@@ -7,6 +7,11 @@ class EmptyQRCode {
 
 }
 
+class QRMiddleItemData {
+
+  QRMiddleItemData();
+
+}
 
 class Activation {
 

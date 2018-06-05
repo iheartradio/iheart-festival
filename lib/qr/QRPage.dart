@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iheart_festival/qr/ActivationListItem.dart';
 import 'package:iheart_festival/qr/QRDate.dart';
 import 'package:iheart_festival/qr/QREmptyItem.dart';
+import 'package:iheart_festival/qr/QRMiddleItem.dart';
 import 'package:iheart_festival/qr/QRViewModel.dart';
 
 
@@ -38,19 +39,10 @@ class _QRPageState extends State<QRPage> {
             return QREmptyItem();
           } else if (model.testData[index] is Activation) {
             return ActivationListItem(model.testData[index]);
+          } else if (model.testData[index] is QRMiddleItemData) {
+            return QRMiddleItem();
           }
         },
-//        children: <Widget>[
-//          QREmptyItem(),
-//          new Padding(
-//            padding: const EdgeInsets.all(16.0),
-//            child: Text(
-//              "With a QR code, you can activate the items below.",
-//              style: Theme.of(context).textTheme.title.copyWith(fontFamily: "Avenir"),
-//            ),
-//          ),
-//          ActivationListItem(model.testData)
-//        ],
       ),
     );
   }

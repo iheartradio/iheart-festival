@@ -42,8 +42,12 @@ class _QREmptyItem extends State<QREmptyItem> {
           width: 300.0,
           child: TextField(
             controller: _editTextController,
+            textAlign: TextAlign.center,
             decoration: InputDecoration(
               hintText: "Copy/paste code from email",
+              hintStyle: TextStyle(
+
+              ),
               contentPadding: EdgeInsets.symmetric(
                 horizontal: 10.0,
                 vertical: 10.0

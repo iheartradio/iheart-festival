@@ -12,6 +12,7 @@ class QRViewModel {
 
 List<Object> MOCK_DATA = [
   EmptyQRCode(),
+  QRMiddleItemData(),
   Activation(
       title: "The CW",
       subtitle: "Visit Pop's Chock'lit Shippe to cool off with ice cream, snap a picture in a photo booth, and grab a Riverdale lunch box.",
