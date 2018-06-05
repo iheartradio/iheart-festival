@@ -1,12 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/LocalInfoItemData.dart';
+import 'package:iheart_festival/schedule/ListItem.dart';
 
 class LocalInfoItem extends StatelessWidget {
 
-//  final LocalInfoItemData data;
-//
-//  LocalInfoItem(this.data)
+  final LocalInfoItemData data;
+
+  LocalInfoItem(this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +17,9 @@ class LocalInfoItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('09/22'),
-            Text('Daytime stage', textScaleFactor: 1.5,),
-            VenueRowInfo(),
+            Text(data.date),
+            Text(data.stage, textScaleFactor: 1.5),
+            VenueRowInfo(data.venue),
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -32,7 +33,7 @@ class LocalInfoItem extends StatelessWidget {
                 textStyle: TextStyle(color: Colors.white, fontStyle: FontStyle.normal),
                 //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3.0)),
                 onPressed: () {
-                  print("Buy Tickets ...");
+                  //TODO: on pressed
                 },
               )
             )
@@ -45,11 +46,15 @@ class LocalInfoItem extends StatelessWidget {
 
 class VenueRowInfo extends StatelessWidget {
 
+  final String venue;
+
+  VenueRowInfo(this.venue);
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Text("Las Vegas Festival Grounds!"),
+        Text(venue),
         Text("Google Map", style: TextStyle(color: Colors.grey, decoration: TextDecoration.underline),)
       ],
     );

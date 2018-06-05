@@ -4,16 +4,17 @@ class ScheduleHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Positioned.fill(child: Image.asset('background.png',fit: BoxFit.cover)),
-        Positioned(
-          bottom: 20.0,
-          left: 20.0,
-          right: 20.0,
-          child: Image.asset('daytime_stage-logo.png', fit: BoxFit.cover),
-        )
-      ],
+    return FlexibleSpaceBar(
+      background: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Image.asset('background.png',fit: BoxFit.cover),
+          Padding(
+            padding: const EdgeInsets.all(48.0),
+            child: Image.asset('daytime_stage-logo.png', width: 200.0, height: 200.0,),
+          )
+        ],
+      ),
     ) ;
   }
 }

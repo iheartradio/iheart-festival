@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iheart_festival/schedule/ScheduleData.dart';
-import 'package:iheart_festival/schedule/schedule_list_item.dart';
+import 'package:iheart_festival/schedule/ListItem.dart';
+import 'package:iheart_festival/schedule/ScheduleHeader.dart';
+import 'package:iheart_festival/schedule/ScheduleViewModel.dart';
+import 'package:iheart_festival/schedule/tabs/TabPage.dart';
 
 class SchedulePage extends StatefulWidget {
 
@@ -9,68 +11,76 @@ class SchedulePage extends StatefulWidget {
 
 }
 
-class _SchedulePageState extends State<SchedulePage> {
+class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderStateMixin {
+
+  TabController _tabController;
+  ScrollController _scrollViewController;
+  List<ListItem> data;
+
+  @override
+  void initState() {
+    super.initState();
+    data = ScheduleViewModel().items;
+    _tabController = TabController(length: 3, vsync: this);
+    _scrollViewController = ScrollController(initialScrollOffset: 0.0);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
+    _scrollViewController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: 250.0,
-            floating: true,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text("TITLE APP BAR"),
-            ),
+      body: NestedScrollView(
+          controller: _scrollViewController,
+          headerSliverBuilder: (BuildContext context, bool boxIsScrolled){
+            return <Widget>[
+              SliverAppBar(
+                leading: Container(),
+                backgroundColor: Colors.white,
+                expandedHeight: 250.0,
+                pinned: true,
+                floating: true,
+                flexibleSpace: ScheduleHeader(),
+                forceElevated: boxIsScrolled,
+                bottom: TabBar(
+                    tabs: [
+                      Tab(
+                        child: Text("Friday".toUpperCase(), style: TextStyle(color:  const Color(0xFFFF7676))),
+                      ),
+                      Tab(
+                        child: Text("Saturday AM".toUpperCase(), style: TextStyle(color: const Color(0xFFFF7676))),
+                      ),
+                      Tab(
+                        child: Text("Saturday PM".toUpperCase(), style: TextStyle(color: const Color(0xFFFF7676))),
+                      )
+                    ],
+                controller: _tabController,
+                ),
+              )
+            ];
+          },
+          body: TabBarView(
+              children: [
+                TabPage(data),
+                Placeholder(),
+                Placeholder()
+              ],
+              controller: _tabController,
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) => ListTile(
-              title: Text("List item $index"),
-            )),
-          )
-        ],
       ),
     );
-
+  }
 }
 
 
-ArtistScheduleData data = ArtistScheduleData(
-    "11AM",
-    "Dua Lipa",
-    "Pop, Synth Pop",
-    "https://cps-static.rovicorp.com/3/JPG_400/MI0004/057/MI0004057529.jpg?partner=allrovi.com",
-    true
-);
+class ScheduleTabController extends TabController {
 
+  final int length;
 
-
-/*
-return Scaffold(
-//      body: CustomScrollView(
-//        slivers: <Widget>[
-//          SliverAppBar(
-//            pinned: true,
-//            expandedHeight: 250.0,
-//            flexibleSpace: FlexibleSpaceBar(
-//              title: Text("Title"),
-//              //background: ,
-//            ),
-//          ),
-//
-//          SliverPadding(
-//            padding: EdgeInsets.all(16.0),
-//            sliver: SliverList(
-//              delegate: SliverChildListDelegate([
-//                Text("other title"),
-//                Text("body"),
-//                Text("other info"),
-//              ]),
-//            ),
-//          )
-//        ],
-//      ),
-//    );
-
-
- */
+  ScheduleTabController(this.length);
+}

@@ -1,11 +1,13 @@
 
-class HeaderData {
+import 'package:iheart_festival/schedule/ListItem.dart';
+
+class HeaderData implements ListItem {
   final String imagePath;
 
   HeaderData(this.imagePath);
 }
 
-class InfoData {
+class InfoData implements ListItem {
 
   final String time;
   final String description;
@@ -13,7 +15,7 @@ class InfoData {
   InfoData(this.time, this.description);
 }
 
-class ArtistScheduleData {
+class ArtistScheduleData implements ListItem {
 
   final String time;
   final String title;
