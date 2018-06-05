@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iheart_festival/qr/ActivationListItem.dart';
 import 'package:iheart_festival/qr/QREmptyItem.dart';
+import 'package:iheart_festival/qr/QRViewModel.dart';
 
 
 
@@ -13,6 +15,14 @@ class QRPage extends StatefulWidget {
 
 class _QRPageState extends State<QRPage> {
 
+  QRViewModel model;
+
+  @override
+  void initState() {
+    model = QRViewModel();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return _buildEmptyState(context);
@@ -22,7 +32,15 @@ class _QRPageState extends State<QRPage> {
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          QREmptyItem()
+          QREmptyItem(),
+          new Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              "With a QR code, you can activate the items below.",
+              style: Theme.of(context).textTheme.title.copyWith(fontFamily: "Avenir"),
+            ),
+          ),
+          ActivationListItem(model.testData)
         ],
       ),
     );
