@@ -36,10 +36,7 @@ class LocalInfoItem extends StatelessWidget {
                 },
               )
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 32.0, right: 32.0, bottom: 8.0),
-              child: Divider(indent: 0.0, color: Colors.grey),
-            )
+            InfoItemDivider()
           ],
         ),
       );
@@ -67,5 +64,29 @@ class VenueRowInfo extends StatelessWidget {
       ),
     );
   }
+}
+
+class InfoItemDivider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0, left: 32.0, right: 64.0, bottom: 8.0),
+          child: Divider(indent: 0.0, color: Colors.grey),
+        ),
+        Positioned(
+          right: 10.0,
+          child: IconButton(
+            icon: Icon(Icons.filter_list, color: Colors.grey),
+            onPressed: () {
+              //TODO: filter
+            },
+          ),
+        )
+      ]
+    );
+  }
+
 }
 

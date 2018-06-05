@@ -20,6 +20,7 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(_handleTabSelection);
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
     model = new ScheduleViewModel();
   }
@@ -30,6 +31,13 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
 
     _tabController.dispose();
     _scrollViewController.dispose();
+  }
+
+  void _handleTabSelection() {
+    setState(() {
+
+    });
+
   }
 
   @override
