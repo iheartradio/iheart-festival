@@ -4,29 +4,29 @@ import 'package:iheart_festival/LocalInfoItem.dart';
 import 'package:iheart_festival/LocalInfoItemData.dart';
 import 'package:iheart_festival/schedule/ListItem.dart';
 import 'package:iheart_festival/schedule/ScheduleData.dart';
+import 'package:iheart_festival/schedule/ScheduleViewModel.dart';
 import 'package:iheart_festival/schedule/schedule_list_item.dart';
 
 class TabPage extends StatefulWidget {
 
   final List<ListItem> items;
+
   TabPage(this.items);
 
   @override
-  State<StatefulWidget> createState() => _FridayPageState(items);
-
+  State<StatefulWidget> createState() => _TabPageState(items);
 }
 
-class _FridayPageState extends State<TabPage> {
+class _TabPageState extends State<TabPage> {
 
   final List<ListItem> items;
 
-  _FridayPageState(this.items);
+  _TabPageState(this.items);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-        itemCount: items.length,
+      return ListView.builder(
+          itemCount: items.length,
           itemBuilder: (context, index) {
           final item = items[index];
 
@@ -44,7 +44,6 @@ class _FridayPageState extends State<TabPage> {
               );
             }
           }
-      ),
-    );
+      );
   }
 }

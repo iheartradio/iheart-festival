@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iheart_festival/schedule/ListItem.dart';
 import 'package:iheart_festival/schedule/ScheduleHeader.dart';
 import 'package:iheart_festival/schedule/ScheduleViewModel.dart';
 import 'package:iheart_festival/schedule/tabs/TabPage.dart';
@@ -15,19 +14,20 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
 
   TabController _tabController;
   ScrollController _scrollViewController;
-  List<ListItem> data;
+  ScheduleViewModel model;
 
   @override
   void initState() {
     super.initState();
-    data = ScheduleViewModel().items;
     _tabController = TabController(length: 3, vsync: this);
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
+    model = new ScheduleViewModel();
   }
 
   @override
   void dispose() {
     super.dispose();
+
     _tabController.dispose();
     _scrollViewController.dispose();
   }
@@ -66,9 +66,9 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
           },
           body: TabBarView(
               children: [
-                TabPage(data),
-                Placeholder(),
-                Placeholder()
+                TabPage(model.items),
+                TabPage(model.items_sat_am),
+                TabPage(model.items_sat_pm)
               ],
               controller: _tabController,
           ),
