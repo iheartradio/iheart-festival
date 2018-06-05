@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/LocalInfoItemData.dart';
-import 'package:iheart_festival/schedule/ListItem.dart';
 
 class LocalInfoItem extends StatelessWidget {
 
@@ -11,9 +10,8 @@ class LocalInfoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: EdgeInsets.only(top: 16.0, left: 16.0),
+      return Container(
+        padding: EdgeInsets.only(top: 8.0, left: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -39,8 +37,7 @@ class LocalInfoItem extends StatelessWidget {
             )
           ],
         ),
-      ),
-    );
+      );
   }
 }
 

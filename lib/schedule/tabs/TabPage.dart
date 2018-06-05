@@ -2,36 +2,36 @@
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/LocalInfoItem.dart';
 import 'package:iheart_festival/LocalInfoItemData.dart';
-import 'package:iheart_festival/schedule/ListItem.dart';
 import 'package:iheart_festival/schedule/ScheduleData.dart';
+import 'package:iheart_festival/schedule/ScheduleViewModel.dart';
 import 'package:iheart_festival/schedule/schedule_list_item.dart';
 
 class TabPage extends StatefulWidget {
 
-  final List<ListItem> items;
-  TabPage(this.items);
-
   @override
-  State<StatefulWidget> createState() => _FridayPageState(items);
+  State<StatefulWidget> createState() => _TabPageState();
 
 }
 
-class _FridayPageState extends State<TabPage> {
+class _TabPageState extends State<TabPage> {
 
-  final List<ListItem> items;
+  ScheduleViewModel model;
 
-  _FridayPageState(this.items);
+  @override
+  void initState() {
+    model = ScheduleViewModel();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-        itemCount: items.length,
+      return ListView.builder(
+          itemCount: model.items.length,
           itemBuilder: (context, index) {
-          final item = items[index];
+          final item = model.items[index];
 
             if (item is LocalInfoItemData) {
-              return LocalInfoItem(items[index]);
+              return LocalInfoItem(model.items[index]);
             } else if(item is ArtistScheduleData) {
               return ScheduleListItem(
                 onItemTapped: (data) {
@@ -40,11 +40,10 @@ class _FridayPageState extends State<TabPage> {
                 onFavoriteTapped: (data) {
 
                 },
-                data: items[index],
+                data: model.items[index],
               );
             }
           }
-      ),
-    );
+      );
   }
 }

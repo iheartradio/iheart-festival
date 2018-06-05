@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iheart_festival/schedule/ListItem.dart';
+import 'package:iheart_festival/schedule/ScheduleData.dart';
 import 'package:iheart_festival/schedule/ScheduleHeader.dart';
-import 'package:iheart_festival/schedule/ScheduleViewModel.dart';
 import 'package:iheart_festival/schedule/tabs/TabPage.dart';
 
 class SchedulePage extends StatefulWidget {
@@ -15,12 +14,10 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
 
   TabController _tabController;
   ScrollController _scrollViewController;
-  List<ListItem> data;
 
   @override
   void initState() {
     super.initState();
-    data = ScheduleViewModel().items;
     _tabController = TabController(length: 3, vsync: this);
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
   }
@@ -66,7 +63,7 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
           },
           body: TabBarView(
               children: [
-                TabPage(data),
+                TabPage(),
                 Placeholder(),
                 Placeholder()
               ],
@@ -84,3 +81,11 @@ class ScheduleTabController extends TabController {
 
   ScheduleTabController(this.length);
 }
+
+
+var data1 = ArtistScheduleData(
+    "2PM",
+    "Rae Sreemurd",
+    "Pop, Synth Pop",
+    "https://cps-static.rovicorp.com/3/JPG_400/MI0004/057/MI0004057529.jpg?partner=allrovi.com",
+    true);

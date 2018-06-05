@@ -44,7 +44,7 @@ class ScheduleListItem extends StatelessWidget {
                 children: <Widget>[
                   CircleAvatar(
                     backgroundColor: Colors.red,
-                    backgroundImage: NetworkImage("https://cps-static.rovicorp.com/3/JPG_400/MI0004/057/MI0004057529.jpg?partner=allrovi.com"),
+                    backgroundImage: NetworkImage(data.image),
                   ),
                   IconButton(
                     icon: Icon(data.isFavorited ? Icons.favorite : Icons.favorite_border),
