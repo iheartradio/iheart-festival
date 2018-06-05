@@ -10,7 +10,7 @@ class ActivationListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
       child: Card(
         elevation: 4.0,
         child: Column(
@@ -22,7 +22,10 @@ class ActivationListItem extends StatelessWidget {
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Image(image: AssetImage("logo_mars.png")),
+                    child: new SizedBox(
+                      width: 180.0,
+                      child: Image(image: AssetImage(activation.headerImage))
+                    ),
                   ),
                 ),
                 Positioned(
@@ -32,8 +35,7 @@ class ActivationListItem extends StatelessWidget {
                     height: 32.0,
                     width: 88.0,
                     child: Center(
-                        child: Text(
-                      "NOT VISTED",
+                        child: Text(activation.isVisited ? "VISITED" : "NOT VISITED",
                       style: Theme
                           .of(context)
                           .textTheme
@@ -58,7 +60,7 @@ class ActivationListItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              "7 ft away",
+                              activation.distance,
                               style: Theme
                                   .of(context)
                                   .textTheme
@@ -88,7 +90,7 @@ class ActivationListItem extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16.0),
                               child: Text(
-                                "Mars",
+                                activation.title,
                                 style: Theme
                                     .of(context)
                                     .textTheme
@@ -100,7 +102,7 @@ class ActivationListItem extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 16.0),
                               child: Text(
-                                "Get a 360-degree photo where you'll enter into an oversized pack of Caremel M&M's with the new Unsquared character",
+                                activation.subtitle,
                                 style: Theme
                                     .of(context)
                                     .textTheme
@@ -122,7 +124,7 @@ class ActivationListItem extends StatelessWidget {
                       child: SizedBox(
                           height: 18.0,
                           child: Image(
-                            image: AssetImage("tag_free.png"),
+                            image: activation.isFree ? AssetImage("tag_free.png") : AssetImage("tag_contests.png"),
                           )),
                     ),
                   )

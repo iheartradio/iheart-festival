@@ -30,10 +30,18 @@ flutter:
   assets:
     - map.png
     - image_ticket.png
-    - logo_mars.png
     - icon_direction_200.png
     - tag_free.png
     - tag_contests.png
+    - logo_mars.png
+    - logo_cw.png
+    - logo_glade.png
+    - logo_inkbox.png
+    - logo_office.png
+    - logo_statefarm.png
+    - logo_taco.png
+    - logo_tmobile.png
+    - logo_ulta.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
