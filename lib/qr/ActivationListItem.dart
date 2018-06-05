@@ -23,27 +23,31 @@ class ActivationListItem extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: new SizedBox(
-                      width: 180.0,
-                      child: Image(image: AssetImage(activation.headerImage))
-                    ),
+                        width: 180.0,
+                        child:
+                            Image(image: AssetImage(activation.headerImage))),
                   ),
                 ),
                 Positioned(
                   right: 0.0,
                   top: 18.0,
                   child: Container(
-                    height: 32.0,
-                    width: 88.0,
-                    child: Center(
-                        child: Text(activation.isVisited ? "VISITED" : "NOT VISITED",
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .caption
-                          .copyWith(color: Colors.white),
-                    )),
-                    decoration: BoxDecoration(color: Colors.grey),
-                  ),
+                      height: 32.0,
+                      width: 88.0,
+                      child: Center(
+                          child: Text(
+                        activation.isVisited ? "VISITED" : "NOT VISITED",
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .caption
+                            .copyWith(color: Colors.white),
+                      )),
+                      decoration: BoxDecoration(
+                          color: activation.isVisited ? null : Colors.grey,
+                          gradient: activation.isVisited
+                              ? LinearGradient(colors: GREEN)
+                              : null)),
                 )
               ]),
             ),
@@ -98,9 +102,12 @@ class ActivationListItem extends StatelessWidget {
                                     .copyWith(color: Colors.white),
                               ),
                             ),
-                            SizedBox(height: 4.0,),
+                            SizedBox(
+                              height: 4.0,
+                            ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
                               child: Text(
                                 activation.subtitle,
                                 style: Theme
@@ -124,7 +131,9 @@ class ActivationListItem extends StatelessWidget {
                       child: SizedBox(
                           height: 18.0,
                           child: Image(
-                            image: activation.isFree ? AssetImage("tag_free.png") : AssetImage("tag_contests.png"),
+                            image: activation.isFree
+                                ? AssetImage("tag_free.png")
+                                : AssetImage("tag_contests.png"),
                           )),
                     ),
                   )

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/schedule/info/LocalInfoItem.dart';
 import 'package:iheart_festival/LocalInfoItemData.dart';

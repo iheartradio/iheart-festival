@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iheart_festival/qr/QRViewModelProvider.dart';
 
 
 
@@ -82,7 +83,7 @@ class _QREmptyItem extends State<QREmptyItem> {
           child: Text("Buy Tickets", style: TextStyle(color: Colors.white70),),
           splashColor: Color(0xFFFFDBD0),
           onPressed: () {
-
+            QRViewModelProvider.of(context).purchaseTicket();
           },
         )
       ],

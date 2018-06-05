@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:iheart_festival/AnimatedPageRoute.dart';
 import 'package:iheart_festival/common/Fab.dart';
 import 'package:iheart_festival/common/Gradients.dart';
+import 'package:iheart_festival/feed/FeedPage.dart';
 import 'package:iheart_festival/map/MapPage.dart';
 import 'package:iheart_festival/qr/QRPage.dart';
+import 'package:iheart_festival/qr/QRViewModelProvider.dart';
+
 import 'package:iheart_festival/schedule/SchedulePage.dart';
+
 
 void main() => runApp(new FestivalApp());
 
@@ -33,16 +37,11 @@ class _FestivalAppState extends State<FestivalApp> {
         ),
     "feed": () => AnimatedPageRoute(
           transition: (anim, child) => child,
-          builder: (context) => QRPage(),
+          builder: (context) => FeedPage(),
         ),
     "music": () => AnimatedPageRoute(
           transition: (anim, child) => child,
-          builder: (context) => Center(
-                child: Text(
-                  "Music",
-                  style: Theme.of(context).textTheme.body1,
-                ),
-              ),
+          builder: (context) => new QRViewModelProvider(child: QRPage()),
         ),
   };
 
