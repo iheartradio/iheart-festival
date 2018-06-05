@@ -1,5 +1,6 @@
 import 'package:iheart_festival/qr/ActivationListItem.dart';
 import 'package:iheart_festival/qr/QRDate.dart';
+import 'package:iheart_festival/qr/QRTicketItem.dart';
 
 
 
@@ -11,7 +12,7 @@ class QRViewModel {
 }
 
 List<Object> MOCK_DATA = [
-  EmptyQRCode(),
+  QRTicketItemData(),
   QRMiddleItemData(),
   Activation(
       title: "The CW",

@@ -13,6 +13,10 @@ class QRMiddleItemData {
 
 }
 
+class QRTicketItemData {
+  QRTicketItemData();
+}
+
 class Activation {
 
   final String headerImage;

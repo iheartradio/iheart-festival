@@ -43,6 +43,7 @@ flutter:
     - logo_tmobile.png
     - logo_ulta.png
     - bg-wave.png
+    - qr_code.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
