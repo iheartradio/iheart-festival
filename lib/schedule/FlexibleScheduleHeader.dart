@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ScheduleHeader extends StatelessWidget {
+class FlexibleScheduleHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

@@ -56,6 +56,13 @@ flutter:
     - feed-img03.png
     - profile-ihr.png
     - bottom_nav_bg.png
+    - album_dualipa_IDGAF.png
+    - album_dualipa_liveacoustic.png
+    - icon_explicit.png
+    - soundwaves_on.png
+    - topsong_dualipa_album_blue.png
+    - dots_vertical.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
