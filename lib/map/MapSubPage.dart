@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/common/Gradients.dart';
-import 'package:iheart_festival/map/MapSubPage.dart';
 import 'package:iheart_festival/schedule/SchedulePage.dart';
 import 'package:zoomable_image/zoomable_image.dart';
 
 
 
-class MapPage extends StatefulWidget {
+class MapSubPage extends StatefulWidget {
 
   @override
-  State<StatefulWidget> createState() => _MapPageState();
+  State<StatefulWidget> createState() => _MapSubPageState();
 
 }
 
-class _MapPageState extends State<MapPage> with SingleTickerProviderStateMixin {
-
-  TabController _tabController;
-
-  final List<TabData> tabs = <TabData>[
-    TabData("Music Festival", 0, const Color(0xFFFF7676)),
-    TabData("Daytime Stage", 1, const Color(0xFFFF7676)),
-
-  ];
+class _MapSubPageState extends State<MapSubPage> with SingleTickerProviderStateMixin {
 
   double scale = 1.0;
   double xOffset = 0.0;
@@ -30,12 +21,6 @@ class _MapPageState extends State<MapPage> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     scale = 1.0;
-    _tabController = TabController(length: 2, vsync: this);
-    _tabController.addListener((){
-      setState((){
-
-      });
-    });
     super.initState();
   }
 
@@ -81,41 +66,61 @@ class _MapPageState extends State<MapPage> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: new Column(
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: PINK
-              )
-            ),
-            height: 24.0,
-          ),
-          TabBar(
-            tabs: tabs.map((tab) {
-              Color color = tab.index == _tabController.index ? const Color(0xFFFF7676) : Colors.black;
-              return Tab(
-                child: Text(tab.label.toUpperCase(), style: TextStyle(color: color)),
-              );
-            }).toList(),
-            indicatorColor: const Color(0xFFFF7676),
-            controller: _tabController,
-          ),
-          Expanded(
-            child: TabBarView(
-              children: [
-                MapSubPage(),
-                MapSubPage()
-              ],
-              controller: _tabController,
-            ),
-          )
-        ],
-      )
+    return new Stack(
+      children: <Widget>[
+        ZoomableImage(
+          AssetImage("map.png"),
+          maxScale: 0.5,
+          backgroundColor: const Color(0xF5F5F5),
+        ),
+        Positioned(
+          left: 16.0,
+          bottom: 16.0,
+          child: _buildZoomButton(context),
+        )
+      ],
     );
   }
 
-
+  Widget _buildZoomButton(BuildContext context) {
+    return Container(
+      width: 50.0,
+      height: 100.0,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(3.0)),
+        border: Border.all(color: Colors.grey),
+      ),
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: GestureDetector(
+              child: Icon(Icons.add),
+              onTap: () {
+                setState(() {
+                  scale += .1;
+                });
+              },
+            )
+          ),
+          Container(
+            height: 1.0,
+            width: double.infinity,
+            color: Colors.grey,
+          )  ,
+          Expanded(
+            child: GestureDetector(
+              child: Icon(Icons.remove),
+              onTap: () {
+                setState(() {
+                  scale -= .1;
+                });
+              },
+            )
+          ),
+        ],
+      ),
+    );
+  }
 
 }
