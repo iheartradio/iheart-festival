@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/AnimatedPageRoute.dart';
+import 'package:iheart_festival/common/BottomNavBar.dart';
 import 'package:iheart_festival/common/Fab.dart';
 import 'package:iheart_festival/common/Gradients.dart';
 import 'package:iheart_festival/feed/FeedPage.dart';
@@ -43,6 +44,10 @@ class _FestivalAppState extends State<FestivalApp> {
           transition: (anim, child) => child,
           builder: (context) => new QRViewModelProvider(child: QRPage()),
         ),
+    "ticket": () => AnimatedPageRoute(
+      transition: (anim, child) => child,
+      builder: (context) => new QRViewModelProvider(child: QRPage()),
+    ),
   };
 
   @override
@@ -54,38 +59,28 @@ class _FestivalAppState extends State<FestivalApp> {
           primaryColor: const Color(0xFFFF7676),
           accentColor: const Color(0xFFF54EA2)),
       home: Scaffold(
-//        appBar: AppBar(
-//          title: Text("iHeartFestival"),
-//        ),
         body: _buildBody(),
-//        bottomNavigationBar: BottomAppBar(
-//          child: SizedBox(
-//            height: 64.0,
-//          ),
-//        ),
-        bottomNavigationBar: _buildBottomNavigationBar(context),
-        floatingActionButton: FAB(
-          onTap: (){
-
+        bottomNavigationBar: BottomNavBar(
+          _currentIndex,
+          (index) {
+            print("Current index; $_currentIndex");
+            navigatorKey.currentState
+                .pushNamed(pagesRouteFactories.keys.toList()[index]);
+            setState(() {
+              _currentIndex = index;
+            });
+          }
+        ),
+        floatingActionButton: FABCircle(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+            navigatorKey.currentState.pushNamed(pagesRouteFactories.keys.toList()[index]);
           },
-          gradientColors: PINK,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      ),
-    );
-  }
-
-  Widget _buildFAB(BuildContext context) {
-    return RotationTransition(
-      turns: AlwaysStoppedAnimation(45 / 360),
-      child: FloatingActionButton(
-        elevation: 18.0,
-        child: new RotationTransition(
-            turns: AlwaysStoppedAnimation(-45 / 360),
-            child: Icon(Icons.card_giftcard)),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(23.0)),
-        ),
       ),
     );
   }
@@ -94,22 +89,6 @@ class _FestivalAppState extends State<FestivalApp> {
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
       onGenerateRoute: (route) => pagesRouteFactories[route.name]());
-
-  Widget _buildBottomNavigationBar(context) => BottomNavigationBar(
-      currentIndex: _currentIndex,
-      items: [
-        _buildBottomNavigationBarItem("Schedule", Icons.view_list),
-        _buildBottomNavigationBarItem("Map", Icons.map),
-        _buildBottomNavigationBarItem("Feed", Icons.rss_feed),
-        _buildBottomNavigationBarItem("Music", Icons.music_note)
-      ],
-      onTap: (index) {
-        navigatorKey.currentState
-            .pushNamed(pagesRouteFactories.keys.toList()[index]);
-        setState(() {
-          _currentIndex = index;
-        });
-      });
 
   BottomNavigationBarItem _buildBottomNavigationBarItem(name, icon) {
     return BottomNavigationBarItem(
