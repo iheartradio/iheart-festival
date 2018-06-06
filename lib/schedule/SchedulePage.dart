@@ -61,10 +61,11 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
                 flexibleSpace: ScheduleHeader(),
                 forceElevated: boxIsScrolled,
                 bottom: TabBar(
-                  tabs: tabs.map((t) {
-                    Color color = t.index == _tabController.index ? const Color(0xFFFF7676) : Colors.black;
+                  indicatorColor: const Color(0xFFFF7676),
+                  tabs: tabs.map((tab) {
+                    Color color = tab.index == _tabController.index ? const Color(0xFFFF7676) : Colors.black;
                     return Tab(
-                      child: Text(t.label.toUpperCase(), style: TextStyle(color: color)),
+                      child: Text(tab.label.toUpperCase(), style: TextStyle(color: color)),
                     );
                   }).toList(),
                 controller: _tabController,

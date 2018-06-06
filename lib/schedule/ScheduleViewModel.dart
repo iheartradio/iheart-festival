@@ -111,7 +111,7 @@ const List<ListItem> MOCK_DATA_SAT_AM = [
      true),
  ArtistScheduleData(
      "2PM",
-     "Bobby Bones & the Raging Idiots",
+     "Bobby Bones & the \nRaging Idiots",
      "Pop, Synth Pop",
      "https://i.axs.com/2018/01/bobby-bones-the-raging-idiots_01-09-18_7_5a55500c87ede.jpg",
      true),
