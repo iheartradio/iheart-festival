@@ -47,6 +47,11 @@ flutter:
     - qr_code.png
     - background.png
     - daytime_stage-logo.png
+    - MusicFest-logo.png
+    - twitter-verified.png
+    - twitter_comment.png
+    - twitter_retweet.png
+    - feed-img01.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

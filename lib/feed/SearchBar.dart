@@ -30,12 +30,15 @@ class _SearchBarState extends State<SearchBar> {
               padding: const EdgeInsets.all(16.0),
               child: Icon(Icons.search, color: Colors.grey,),
             ),
-            TextField(
-              controller: editingController,
-              decoration: InputDecoration(
-                  hintText: "Search Feed"
-              ),
-            )
+//            new Center(
+//              child: TextField(
+//                controller: editingController,
+//                textAlign: TextAlign.left,
+//                decoration: InputDecoration(
+//                    hintText: "Search Feed"
+//                ),
+//              ),
+//            )
           ],
         ),
       ),
