@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/common/Gradients.dart';
+import 'package:iheart_festival/feed/FeedData.dart';
 
 class TwitterItem extends StatelessWidget {
+
+  final TwitterData data;
+
+  TwitterItem(this.data);
+
   @override
   Widget build(BuildContext context) {
     return new Padding(
@@ -15,7 +21,7 @@ class TwitterItem extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 16.0),
                 child: new SizedBox(
                     child: Image(
-                  image: AssetImage("MusicFest-logo.png"),
+                  image: AssetImage(data.profileImage),
                   width: 56.0,
                 )),
               ),
@@ -25,7 +31,7 @@ class TwitterItem extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(
-                        "iHeartRadio Festival",
+                        data.title,
                         style: Theme.of(context).textTheme.title,
                       ),
                       new Padding(
@@ -40,7 +46,7 @@ class TwitterItem extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    "@iHeartFestival \u2022 3m",
+                    data.subtitle,
                     style: Theme
                         .of(context)
                         .textTheme
@@ -50,7 +56,7 @@ class TwitterItem extends StatelessWidget {
                   new Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
-                      "Vegas are you ready? Meet 2018 \n daytime state lineup! #iHeartDayStage \n tickets go on sale this Thursday!",
+                      data.body,
                       style: Theme.of(context).textTheme.body2,
                       maxLines: 2,
                       softWrap: true,
@@ -58,7 +64,7 @@ class TwitterItem extends StatelessWidget {
                   ),
                   SizedBox(
                     child: Image(
-                      image: AssetImage("feed-img01.png"),
+                      image: AssetImage(data.bodyImage),
                     ),
                     width: 250.0,
                   ),
@@ -72,18 +78,18 @@ class TwitterItem extends StatelessWidget {
                           width: 16.0,
                         ),
                         SizedBox(width: 4.0,),
-                        Text("8", style: Theme.of(context).textTheme.body1.copyWith(color: RED),),
+                        Text(data.chatNum, style: Theme.of(context).textTheme.body1.copyWith(color: RED),),
                         SizedBox(width: 32.0,),
                         new SizedBox(
                           child: Image(image: AssetImage("twitter_retweet.png"),),
                           width: 16.0,
                         ),
                         SizedBox(width: 4.0,),
-                        Text("31", style: Theme.of(context).textTheme.body1.copyWith(color: RED),),
+                        Text(data.retweetNum, style: Theme.of(context).textTheme.body1.copyWith(color: RED),),
                         SizedBox(width: 32.0,),
                         Icon(Icons.favorite_border, color: RED, size: 16.0,),
                         SizedBox(width: 4.0,),
-                        Text("77", style: Theme.of(context).textTheme.body1.copyWith(color: RED),),
+                        Text(data.favorites, style: Theme.of(context).textTheme.body1.copyWith(color: RED),),
                       ],
                     ),
                   )

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/feed/FeedFilterItem.dart';
+import 'package:iheart_festival/feed/FeedViewModel.dart';
 import 'package:iheart_festival/feed/SearchBar.dart';
 import 'package:iheart_festival/feed/TwitterItem.dart';
 
@@ -12,6 +13,14 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
+
+  FeedViewModel model;
+
+  @override
+  void initState() {
+    model = FeedViewModel();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +57,11 @@ class _FeedPageState extends State<FeedPage> {
 
   Widget _buildFeedList(BuildContext context) {
     return Flexible(
-
-      child: ListView(
-        children: <Widget>[
-          TwitterItem(),
-          TwitterItem(),
-        ],
+      child: ListView.builder(
+        itemCount: model.data.length,
+        itemBuilder: (context, index) {
+          return TwitterItem(model.data[index]);
+        },
       ),
     );
   }
