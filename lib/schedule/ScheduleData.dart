@@ -12,7 +12,7 @@ class InfoData implements ListItem {
   final String time;
   final String description;
 
-  InfoData(this.time, this.description);
+  const InfoData(this.time, this.description);
 }
 
 class ArtistScheduleData implements ListItem {

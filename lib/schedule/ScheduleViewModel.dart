@@ -13,6 +13,8 @@ const List<ListItem> MOCK_DATA_FRI = [
 
  LocalInfoItemData("09/22", "Daytime Stage", "Las Vegas Festival Grounds"),
 
+ InfoData("4PM", "Doors open"),
+
  ArtistScheduleData(
     "11AM",
     "Jack White",
@@ -66,6 +68,8 @@ const List<ListItem> MOCK_DATA_FRI = [
 const List<ListItem> MOCK_DATA_SAT_AM = [
 
  LocalInfoItemData("09/23", "Daytime Stage", "Las Vegas Festival Grounds"),
+
+ InfoData("10AM", "Doors open"),
 
  ArtistScheduleData(
      "11AM",
@@ -127,6 +131,8 @@ const List<ListItem> MOCK_DATA_SAT_AM = [
 const List<ListItem> MOCK_DATA_SAT_PM = [
 
  LocalInfoItemData("09/23", "Main Stage", "iHeartRadio Arena"),
+
+ InfoData("6PM", "Doors open"),
 
  ArtistScheduleData(
      "11AM",
