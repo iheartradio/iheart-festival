@@ -16,6 +16,14 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
   ScrollController _scrollViewController;
   ScheduleViewModel model;
 
+  bool selected = false;
+
+  final List<TabData> tabs = <TabData>[
+    TabData("Friday", 0, const Color(0xFFFF7676)),
+    TabData("Saturday AM", 1, const Color(0xFFFF7676)),
+    TabData("Saturday PM", 2, const Color(0xFFFF7676)),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -28,16 +36,13 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
   @override
   void dispose() {
     super.dispose();
-
     _tabController.dispose();
     _scrollViewController.dispose();
   }
 
   void _handleTabSelection() {
     setState(() {
-
     });
-
   }
 
   @override
@@ -56,17 +61,12 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
                 flexibleSpace: ScheduleHeader(),
                 forceElevated: boxIsScrolled,
                 bottom: TabBar(
-                    tabs: [
-                      Tab(
-                        child: Text("Friday".toUpperCase(), style: TextStyle(color:  const Color(0xFFFF7676))),
-                      ),
-                      Tab(
-                        child: Text("Saturday AM".toUpperCase(), style: TextStyle(color: const Color(0xFFFF7676))),
-                      ),
-                      Tab(
-                        child: Text("Saturday PM".toUpperCase(), style: TextStyle(color: const Color(0xFFFF7676))),
-                      )
-                    ],
+                  tabs: tabs.map((t) {
+                    Color color = t.index == _tabController.index ? const Color(0xFFFF7676) : Colors.black;
+                    return Tab(
+                      child: Text(t.label.toUpperCase(), style: TextStyle(color: color)),
+                    );
+                  }).toList(),
                 controller: _tabController,
                 ),
               )
@@ -85,10 +85,11 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
   }
 }
 
+class TabData {
+  final String label;
+  final Color color;
+  int index;
 
-class ScheduleTabController extends TabController {
+  TabData(this.label, this.index, this.color);
 
-  final int length;
-
-  ScheduleTabController(this.length);
 }
