@@ -9,6 +9,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.0
   zoomable_image: ^1.2.0
+  rxdart: ^0.16.7
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +47,14 @@ flutter:
     - qr_code.png
     - background.png
     - daytime_stage-logo.png
+    - MusicFest-logo.png
+    - twitter-verified.png
+    - twitter_comment.png
+    - twitter_retweet.png
+    - feed-img01.png
+    - feed-img02.png
+    - feed-img03.png
+    - profile-ihr.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

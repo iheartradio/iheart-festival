@@ -1,19 +1,35 @@
+import 'dart:async';
+
 import 'package:iheart_festival/qr/ActivationListItem.dart';
 import 'package:iheart_festival/qr/QRDate.dart';
-import 'package:iheart_festival/qr/QRTicketItem.dart';
-
-
-
+import 'package:rxdart/rxdart.dart';
 
 class QRViewModel {
 
-  final List<Object> testData = MOCK_DATA;
+  final BehaviorSubject<List<Object>> _dataSubject = BehaviorSubject(seedValue: List());
+
+  final List<Object> _testData = List();
+
+  QRViewModel() {
+    _testData.add(new EmptyQRCode());
+    _testData.add(new QRMiddleItemData());
+    _testData.addAll(MOCK_ACTIVATIONS);
+    _dataSubject.add(_testData);
+  }
+
+  void purchaseTicket() {
+    _testData.removeAt(0);
+    _testData.insert(0, QRTicketItemData());
+    _dataSubject.add(_testData);
+  }
+
+  Stream<Object> data() => _dataSubject.stream;
 
 }
 
-List<Object> MOCK_DATA = [
-  QRTicketItemData(),
-  QRMiddleItemData(),
+
+
+List<Object> MOCK_ACTIVATIONS = [
   Activation(
       title: "The CW",
       subtitle: "Visit Pop's Chock'lit Shippe to cool off with ice cream, snap a picture in a photo booth, and grab a Riverdale lunch box.",
