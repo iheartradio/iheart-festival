@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iheart_festival/schedule/ScheduleHeader.dart';
+import 'package:iheart_festival/schedule/FlexibleScheduleHeader.dart';
 import 'package:iheart_festival/schedule/ScheduleViewModel.dart';
 import 'package:iheart_festival/schedule/tabs/TabPage.dart';
 
@@ -16,12 +16,10 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
   ScrollController _scrollViewController;
   ScheduleViewModel model;
 
-  bool selected = false;
-
   final List<TabData> tabs = <TabData>[
-    TabData("Friday", 0, const Color(0xFFFF7676)),
-    TabData("Saturday AM", 1, const Color(0xFFFF7676)),
-    TabData("Saturday PM", 2, const Color(0xFFFF7676)),
+    TabData("Friday", 0, Colors.black),
+    TabData("Saturday AM", 1, Colors.black),
+    TabData("Saturday PM", 2, Colors.black),
   ];
 
   @override
@@ -45,6 +43,10 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
     });
   }
 
+  Color _getColor(int index) {
+    return index == _tabController.index ? const Color(0xFFFF7676) : Colors.black;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,14 +60,19 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
                 expandedHeight: 250.0,
                 pinned: true,
                 floating: true,
-                flexibleSpace: ScheduleHeader(),
+                flexibleSpace: FlexibleScheduleHeader(),
                 forceElevated: boxIsScrolled,
+
                 bottom: TabBar(
                   indicatorColor: const Color(0xFFFF7676),
                   tabs: tabs.map((tab) {
-                    Color color = tab.index == _tabController.index ? const Color(0xFFFF7676) : Colors.black;
                     return Tab(
-                      child: Text(tab.label.toUpperCase(), style: TextStyle(color: color)),
+                      child: Container(
+                        height: 50.0,
+                        width: 150.0,
+                        color: Colors.white,
+                          child: Center(child: Text(tab.label.toUpperCase(), style: TextStyle(color: _getColor(tab.index))))
+                      ),
                     );
                   }).toList(),
                 controller: _tabController,
@@ -73,6 +80,7 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
               )
             ];
           },
+
           body: TabBarView(
               children: [
                 TabPage(model.items),

@@ -5,6 +5,7 @@ import 'package:iheart_festival/common/Fab.dart';
 import 'package:iheart_festival/common/Gradients.dart';
 import 'package:iheart_festival/feed/FeedPage.dart';
 import 'package:iheart_festival/map/MapPage.dart';
+import 'package:iheart_festival/music/MusicPage.dart';
 import 'package:iheart_festival/qr/QRPage.dart';
 import 'package:iheart_festival/qr/QRViewModelProvider.dart';
 
@@ -42,7 +43,7 @@ class _FestivalAppState extends State<FestivalApp> {
         ),
     "music": () => AnimatedPageRoute(
           transition: (anim, child) => child,
-          builder: (context) => new QRViewModelProvider(child: QRPage()),
+          builder: (context) => MusicPage()/*new QRViewModelProvider(child: QRPage())*/,
         ),
     "ticket": () => AnimatedPageRoute(
       transition: (anim, child) => child,
