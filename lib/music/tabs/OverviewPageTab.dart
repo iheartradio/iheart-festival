@@ -37,7 +37,8 @@ class _OverviewPageState extends State<OverviewPageTab> {
 
           } else if (item is SongListItemData) {
             return SongListItem(items[index]);
-          } else if (item is AlbumData) {
+
+          } else if (item is AlbumCarouselData) {
             return AlbumListItem(items[index]);
           }
         }

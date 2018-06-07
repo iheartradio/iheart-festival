@@ -8,6 +8,31 @@ class MusicViewModel {
   final List<Object> aboutItems = _ABOUT_DATA;
 }
 
+const List<AlbumData> albums_1 = [
+  AlbumData(
+      title: "IDGAF",
+      description: "May 2018 \u2022 5 songs",
+      image: "album_dualipa_IDGAF.png"),
+
+  AlbumData(
+      title: "IDGAF",
+      description: "Feb 2018 \u2022 4 songs",
+      image: "album_dualipa_idgafremixes.png"),
+];
+
+const List<AlbumData> albums_2 = [
+  AlbumData(
+      title: "Live Acoustic EP",
+      description: "Dec 2017 2018 \u2022 4 songs",
+      image: "album_dualipa_liveacoustic.png"),
+
+  AlbumData(
+      title: "New Rules",
+      description: "Nov 2017 \u2022 1 song",
+      image: "album_dualipa_newrules.png")
+
+];
+
 const List<Object> _ARTIST_DATA = [
 
   LatestReleaseData(
@@ -61,26 +86,13 @@ const List<Object> _ARTIST_DATA = [
       action: "See All"
   ),
 
-  AlbumData(
-      title: "IDGAF",
-      description: "May 2018 \u2022 5 songs",
-      image: "album_dualipa_IDGAF.png"),
+  AlbumCarouselData(
+    albums: albums_1
+  ),
 
-  AlbumData(
-      title: "IDGAF",
-      description: "Feb 2018 \u2022 4 songs",
-      image: "album_dualipa_idgafremixes.png"),
-
-  AlbumData(
-      title: "IDGAF",
-      description: "Dec 2017 2018 \u2022 4 songs",
-      image: "album_dualipa_liveacoustic.png"),
-
-  AlbumData(
-      title: "IDGAF",
-      description: "Nov 2017 \u2022 1 song",
-      image: "album_dualipa_newrules.png")
-
+  AlbumCarouselData(
+    albums: albums_2
+  )
 ];
 
 const List<String> bioImages = [

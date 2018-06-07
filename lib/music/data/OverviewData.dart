@@ -35,3 +35,9 @@ class AlbumData {
   const AlbumData({this.title, this.description, this.image});
 }
 
+class AlbumCarouselData {
+  final List<AlbumData> albums;
+
+  const AlbumCarouselData({this.albums});
+}
+

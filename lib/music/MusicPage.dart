@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:iheart_festival/common/CustomTab.dart';
 import 'package:iheart_festival/music/MusicPlayer.dart';
 import 'package:iheart_festival/music/MusicViewModel.dart';
 import 'package:iheart_festival/music/tabs/AboutPageTab.dart';
@@ -46,11 +47,6 @@ class _MusicPageState extends State<MusicPage> with SingleTickerProviderStateMix
     super.dispose();
   }
 
-  Color _getSelectedColor(int index) {
-    print(index);
-    return index == _tabController.index ? const Color(0xFFFF7676) : Colors.black;
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -71,21 +67,19 @@ class _MusicPageState extends State<MusicPage> with SingleTickerProviderStateMix
                 floating: true,
                 flexibleSpace: MusicPlayerPage(),
                 forceElevated: isScrolled,
-                bottom: TabBar(
-                  indicatorColor: const Color(0xFFFF7676),
-                  tabs: _tabs.map((tab){
-                    return Tab(
-                      child: Text(tab.label.toUpperCase(), style: TextStyle(color: _getSelectedColor(tab.index))),
-                    );
-                  }).toList(),
-                  controller: _tabController,
-                ),
+                bottom: CustomTab(_tabs, _tabController),
               )
             ];
           }, body: TabBarView(
         children: [
-          OverviewPageTab(model.items),
-          AboutPageTab(model.aboutItems),
+          Container(
+            color: Colors.white,
+              child: OverviewPageTab(model.items)
+          ),
+          Container(
+              color: Colors.white,
+              child: AboutPageTab(model.aboutItems)
+          ),
           RelatedPageTab()
         ],
         controller: _tabController,

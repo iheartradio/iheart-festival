@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iheart_festival/common/CustomTab.dart';
 import 'package:iheart_festival/schedule/FlexibleScheduleHeader.dart';
 import 'package:iheart_festival/schedule/ScheduleViewModel.dart';
 import 'package:iheart_festival/schedule/tabs/TabPage.dart';
@@ -7,6 +8,15 @@ class SchedulePage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _SchedulePageState();
+
+}
+
+class TabData {
+  final String label;
+  final Color color;
+  int index;
+
+  TabData(this.label, this.index, this.color);
 
 }
 
@@ -48,10 +58,6 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
     });
   }
 
-  Color _getColor(int index) {
-    return index == _tabController.index ? const Color(0xFFFF7676) : Colors.black;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,43 +73,27 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
                 floating: true,
                 flexibleSpace: FlexibleScheduleHeader(),
                 forceElevated: boxIsScrolled,
-
-                bottom: TabBar(
-                  indicatorColor: const Color(0xFFFF7676),
-                  tabs: tabs.map((tab) {
-                    return Tab(
-                      child: Container(
-                        height: 50.0,
-                        width: 150.0,
-                        color: Colors.white,
-                          child: Center(child: Text(tab.label.toUpperCase(), style: TextStyle(color: _getColor(tab.index))))
-                      ),
-                    );
-                  }).toList(),
-                controller: _tabController,
-                ),
+                bottom: CustomTab(tabs, _tabController),
               )
             ];
           },
 
           body: TabBarView(
               children: [
-                TabPage(modelOne),
-                TabPage(modelTwo),
-                TabPage(modelThree)
+                Container(
+                  color: Colors.white,
+                  child: TabPage(modelOne)
+                ),
+                Container(
+                  color: Colors.white,
+                    child: TabPage(modelTwo)),
+                Container(
+                  color: Colors.white,
+                  child: TabPage(modelThree))
               ],
               controller: _tabController,
           ),
       ),
     );
   }
-}
-
-class TabData {
-  final String label;
-  final Color color;
-  int index;
-
-  TabData(this.label, this.index, this.color);
-
 }
