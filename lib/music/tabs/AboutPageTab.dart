@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/music/BiographyItem.dart';
+import 'package:iheart_festival/music/NewsListItem.dart';
 import 'package:iheart_festival/music/ReadMoreHeader.dart';
 import 'package:iheart_festival/music/SimpleHeaderItem.dart';
 import 'package:iheart_festival/music/data/AboutData.dart';
@@ -32,6 +33,8 @@ class AboutPageTabState extends State<AboutPageTab> {
           return BiographyItem();
         } else if (item is ReadMoreData) {
           return ReadMoreHeader(items[index]);
+        } else if (item is NewsItemData) {
+          return NewsListItem(items[index]);
         }
       });
   }

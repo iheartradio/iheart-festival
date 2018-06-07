@@ -16,3 +16,14 @@ class ReadMoreData {
 
   const ReadMoreData({this.header});
 }
+
+class NewsItemData {
+
+  final String image;
+  final String headline;
+  final String author;
+  final String date;
+
+  const NewsItemData({this.image, this.headline, this.author, this.date});
+
+}

@@ -83,8 +83,6 @@ const List<Object> _ARTIST_DATA = [
 
 ];
 
-
-
 const List<Object> _ABOUT_DATA = [
 
   SimpleHeaderData(
@@ -99,66 +97,29 @@ const List<Object> _ABOUT_DATA = [
     header: "Read More"
   ),
 
-  SongListItemData(
-      albumName: "IDGAF",
-      name: "Dua Lipa",
-      image: "topsong_dualipa_album_blue.png",
-      explicitIcon: "icon_explicit.png",
-      counter: "1"
-  ),
-  SongListItemData(
-      albumName: "New Rules",
-      name: "New Rules Acoustic",
-      image: "album_dualipa_liveacoustic.png",
-      explicitIcon: "icon_explicit.png",
-      counter: "2"
-  ),
-  SongListItemData(
-      albumName: "Be The One",
-      name: "Dua Lipa",
-      image: "topsong_dualipa_album_blue.png",
-      explicitIcon: "icon_explicit.png",
-      counter: "3"
-  ),
-  SongListItemData(
-      albumName: "Blow your mind (Mwah)",
-      name: "Blow your mind (Mwah)",
-      image: "topsong_dualipa_album_blue.png",
-      explicitIcon: "icon_explicit.png",
-      counter: "4"
-  ),
-  SongListItemData(
-      albumName: "Hotter Than Hell",
-      name: "Dua Lipa",
-      image: "topsong_dualipa_album_blue.png",
-      explicitIcon: "icon_explicit.png",
-      counter: "5"
+  SimpleHeaderData(
+    header: "News"
   ),
 
-  SongsHeaderData(
-      header: "Albums",
-      action: "See All"
+  NewsItemData(
+    image: "dualipa-news-001.png",
+    headline: "Calvin Harris & Dua Lipa Bring The Summer Aesthetics In 'One Kiss' Video",
+    author: "By James Dinh",
+    date: "May 3rd 2018"
   ),
 
-  AlbumData(
-      title: "IDGAF",
-      description: "May 2018 \u2022 5 songs",
-      image: "album_dualipa_IDGAF.png"),
+  NewsItemData(
+      image: "dualipa-news-002.png",
+      headline: "Katy Perry Interviews Dua Lipa for 'V Magazine': 3 Fun Facts We Learned",
+      author: "By Taylor Smith",
+      date: "April 13th 2018"
+  ),
 
-  AlbumData(
-      title: "IDGAF",
-      description: "Feb 2018 \u2022 4 songs",
-      image: "album_dualipa_idgafremixes.png"),
-
-  AlbumData(
-      title: "IDGAF",
-      description: "Dec 2017 2018 \u2022 4 songs",
-      image: "album_dualipa_liveacoustic.png"),
-
-  AlbumData(
-      title: "IDGAF",
-      description: "Nov 2017 \u2022 1 song",
-      image: "album_dualipa_newrules.png")
-
+  NewsItemData(
+      image: "dualipa-news-003.png",
+      headline: "Calvin Harris & Dua Lipa Bring The Summer Aesthetics In 'One Kiss' (VIDEO)",
+      author: "By Nicole Mastrogiannis",
+      date: "April 6 2018"
+  )
 ];
 
