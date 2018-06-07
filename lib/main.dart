@@ -55,10 +55,11 @@ class _FestivalAppState extends State<FestivalApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          fontFamily: 'Avenir',
-          iconTheme: IconThemeData(color: const Color(0xFFFF7676)),
-          primaryColor: const Color(0xFFFF7676),
-          accentColor: const Color(0xFFF54EA2)),
+        dividerColor: Colors.red,
+        fontFamily: 'Avenir',
+        iconTheme: IconThemeData(color: const Color(0xFFFF7676)),
+        primaryColor: const Color(0xFFFF7676),
+        accentColor: const Color(0xFFF54EA2)),
       home: Scaffold(
         body: _buildBody(),
         bottomNavigationBar: BottomNavBar(
