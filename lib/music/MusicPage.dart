@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/music/MusicPlayer.dart';
-import 'package:iheart_festival/music/OverviewViewModel.dart';
+import 'package:iheart_festival/music/MusicViewModel.dart';
 import 'package:iheart_festival/music/tabs/AboutPageTab.dart';
 import 'package:iheart_festival/music/tabs/OverviewPageTab.dart';
 import 'package:iheart_festival/music/tabs/RelatedPageTab.dart';
@@ -16,7 +16,7 @@ class _MusicPageState extends State<MusicPage> with SingleTickerProviderStateMix
 
   TabController _tabController;
   ScrollController _scrollController;
-  OverviewViewModel model;
+  MusicViewModel model;
 
   final List<TabData> _tabs = <TabData>[
     TabData("Overview", 0, Colors.black),
@@ -29,7 +29,7 @@ class _MusicPageState extends State<MusicPage> with SingleTickerProviderStateMix
     _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(_handleSelection);
     _scrollController = ScrollController(initialScrollOffset: 0.0);
-    model = new OverviewViewModel();
+    model = new MusicViewModel();
     super.initState();
   }
 

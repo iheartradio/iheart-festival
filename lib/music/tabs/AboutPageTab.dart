@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:iheart_festival/music/ArtistImageCarousel.dart';
 import 'package:iheart_festival/music/BiographyItem.dart';
 import 'package:iheart_festival/music/NewsListItem.dart';
 import 'package:iheart_festival/music/ReadMoreHeader.dart';
@@ -29,12 +30,18 @@ class AboutPageTabState extends State<AboutPageTab> {
         final item = items[index];
         if (item is SimpleHeaderData) {
           return SimpleHeaderItem(items[index]);
+
         } else if (item is BiographyData) {
           return BiographyItem();
+
         } else if (item is ReadMoreData) {
           return ReadMoreHeader(items[index]);
+
         } else if (item is NewsItemData) {
           return NewsListItem(items[index]);
+
+        } else {
+          return ArtistImageCarousel(items[index]);
         }
       });
   }

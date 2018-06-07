@@ -27,3 +27,9 @@ class NewsItemData {
   const NewsItemData({this.image, this.headline, this.author, this.date});
 
 }
+
+class CarouselData {
+
+  final List<String> images;
+  const CarouselData({this.images});
+}

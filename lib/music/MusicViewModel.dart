@@ -2,7 +2,7 @@
 import 'package:iheart_festival/music/data/AboutData.dart';
 import 'package:iheart_festival/music/data/OverviewData.dart';
 
-class OverviewViewModel {
+class MusicViewModel {
 
   final List<Object> items = _ARTIST_DATA;
   final List<Object> aboutItems = _ABOUT_DATA;
@@ -83,12 +83,25 @@ const List<Object> _ARTIST_DATA = [
 
 ];
 
+const List<String> bioImages = [
+  "dualipa_001.png",
+  "dualipa_002.png",
+  "dualipa_003.png",
+  "dualipa_004.png",
+  "dualipa_005.png",
+  "dualipa_006.png",
+];
+
 const List<Object> _ABOUT_DATA = [
 
   SimpleHeaderData(
     header: "Biography"
   ),
 
+  CarouselData(
+    images: bioImages
+  ),
+  
   BiographyData(
       bio: ""
   ),
@@ -122,4 +135,3 @@ const List<Object> _ABOUT_DATA = [
       date: "April 6 2018"
   )
 ];
-

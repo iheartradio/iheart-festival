@@ -4,9 +4,8 @@ class LatestReleaseData {
   final String title;
   final String description;
   final String image;
-  final String info;
 
-  const LatestReleaseData({this.title, this.description, this.image, this.info});
+  const LatestReleaseData({this.title, this.description, this.image});
 }
 
 class SongsHeaderData {
