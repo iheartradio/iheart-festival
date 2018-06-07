@@ -19,30 +19,38 @@ class _RelatedPageTabState extends State<RelatedPageTab> {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      color: Colors.white,
-      child: ListView.builder(
-        itemCount: model.data.length,
-        itemBuilder: (context, index) {
-          var itemData = model.data[index];
-          if (itemData is RelatedItemData) {
-            return RelatedArtistItem(itemData);
-          } else {
-            return new Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text("Related Artists",
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .title
-                      .copyWith(
-                        color: const Color(0xFFFF7676),
-                        fontSize: 18.0
-                      )
-              ),
+    return RelatedTabViewModelProvider(
+      relatedTabViewModel: model,
+      child: Container(
+        color: Colors.white,
+        child: new StreamBuilder(
+          stream: model.dataStream(),
+          builder: (context, snapshot) {
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (context, index) {
+                var itemData = snapshot.data[index];
+                if (itemData is RelatedItemData) {
+                  return RelatedArtistItem(itemData, index);
+                } else {
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text("Related Artists",
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .title
+                            .copyWith(
+                            color: const Color(0xFFFF7676),
+                            fontSize: 18.0
+                        )
+                    ),
+                  );
+                }
+              },
             );
-          }
-        },
+          },
+        ),
       ),
     );
   }

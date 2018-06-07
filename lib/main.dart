@@ -19,10 +19,13 @@ class FestivalApp extends StatefulWidget {
   State<StatefulWidget> createState() => _FestivalAppState();
 }
 
-class _FestivalAppState extends State<FestivalApp> {
+class _FestivalAppState extends State<FestivalApp> with TickerProviderStateMixin {
   final navigatorKey = GlobalKey<NavigatorState>();
 
   int _currentIndex = 0;
+
+  AnimationController animationController;
+  Animation<double> fabAnimation;
 
   final pagesRouteFactories = {
     "/": () => AnimatedPageRoute(
@@ -52,6 +55,30 @@ class _FestivalAppState extends State<FestivalApp> {
   };
 
   @override
+  void initState() {
+    animationController = AnimationController(
+      duration: Duration(milliseconds: 800),
+      vsync: this
+    );
+
+    final Animation<double> easeSelection = new CurvedAnimation(
+      parent: animationController,
+      curve: Curves.easeInOut,
+    );
+
+    fabAnimation = Tween<double>(begin: 1.0, end: 1.3).animate(easeSelection);
+    animationController.addStatusListener((status) {
+      if (AnimationStatus.completed == status) {
+        animationController.reverse();
+      }
+    });
+
+
+    animationController.forward();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
@@ -73,6 +100,7 @@ class _FestivalAppState extends State<FestivalApp> {
           }
         ),
         floatingActionButton: FABCircle(
+          animation: fabAnimation,
           currentIndex: _currentIndex,
           onTap: (index) {
             setState(() {

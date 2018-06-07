@@ -43,22 +43,26 @@ class FABCircle extends StatelessWidget {
   //List<Color> gradientColors;
   final ValueChanged<int> onTap;
   final int currentIndex;
+  final Animation<double> animation;
 
-  FABCircle({this.onTap, this.currentIndex});
+  FABCircle({this.onTap, this.currentIndex, this.animation});
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(Icons.settings_overscan, color: Colors.white,),
-            Text("QR", style: TextStyle(color: currentIndex == 4 ? Colors.white : Colors.white70),)
-          ],
+    return new ScaleTransition(
+      scale: animation,
+      child: FloatingActionButton(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(Icons.settings_overscan, color: Colors.white,),
+              Text("QR", style: TextStyle(color: currentIndex == 4 ? Colors.white : Colors.white70),)
+            ],
+        ),
+        onPressed: () {
+          onTap(4);
+        },
       ),
-      onPressed: () {
-        onTap(4);
-      },
     );
   }
 

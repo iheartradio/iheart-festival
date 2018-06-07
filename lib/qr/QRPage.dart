@@ -19,8 +19,11 @@ class QRPage extends StatefulWidget {
 
 class _QRPageState extends State<QRPage> {
 
+  GlobalKey<AnimatedListState> _listKey;
+
   @override
   void initState() {
+    _listKey = new GlobalKey<AnimatedListState>();
     super.initState();
   }
 
@@ -28,6 +31,20 @@ class _QRPageState extends State<QRPage> {
   Widget build(BuildContext context) {
     return _buildEmptyState(context);
   }
+
+//  Widget _buildEmptyState(BuildContext context) {
+//    // QRViewModelProvider.of(context).data()
+//    return AnimatedList(
+//      key: _listKey,
+//      initialItemCount: 3,
+//      itemBuilder: (context, index, animation) {
+//        return FadeTransition(
+//          opacity: animation,
+//          child: Text("ANIMATION!!!!"),
+//        );
+//      },
+//    );
+//  }
 
   Widget _buildEmptyState(BuildContext context) {
     return Scaffold(
@@ -37,17 +54,18 @@ class _QRPageState extends State<QRPage> {
           if (!snapshot.hasData) {
             return CircularProgressIndicator();
           }
-          return ListView.builder(
-            itemCount: snapshot.data.length,
-            itemBuilder: (context, index) {
+          return AnimatedList(
+            key: _listKey,
+            initialItemCount: snapshot.data.length,
+            itemBuilder: (context, index, animation) {
               if (snapshot.data[index] is EmptyQRCode) {
-                return QREmptyItem();
+                return QREmptyItem(animation);
               } else if (snapshot.data[index] is Activation) {
                 return ActivationListItem(snapshot.data[index]);
               } else if (snapshot.data[index] is QRMiddleItemData) {
                 return QRMiddleItem();
               } else if (snapshot.data[index] is QRTicketItemData) {
-                return QRTicketItem();
+                return QRTicketItem(animation);
               }
             },
           );

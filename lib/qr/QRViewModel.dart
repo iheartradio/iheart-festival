@@ -1,10 +1,13 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:iheart_festival/qr/ActivationListItem.dart';
 import 'package:iheart_festival/qr/QRDate.dart';
 import 'package:rxdart/rxdart.dart';
 
 class QRViewModel {
+
+  GlobalKey<AnimatedListState> key;
 
   final BehaviorSubject<List<Object>> _dataSubject = BehaviorSubject(seedValue: List());
 
@@ -24,7 +27,6 @@ class QRViewModel {
   }
 
   Stream<Object> data() => _dataSubject.stream;
-
 }
 
 

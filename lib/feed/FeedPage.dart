@@ -21,13 +21,16 @@ class _FeedPageState extends State<FeedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        StatusBar(),
-        SearchBar(),
-        _buildFilterList(context),
-        _buildFeedList(context)
-      ],
+    return new Container(
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          StatusBar(),
+          SearchBar(),
+          _buildFilterList(context),
+          _buildFeedList(context)
+        ],
+      ),
     );
   }
 

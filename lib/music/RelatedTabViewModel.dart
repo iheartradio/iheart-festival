@@ -1,9 +1,48 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:iheart_festival/music/data/RelatedData.dart';
+import 'package:rxdart/rxdart.dart';
 
 
 class RelatedTabViewModel {
 
-  final List<Object> data = _MOCK_DATA;
+  List<Object> data = _MOCK_DATA;
+
+  final BehaviorSubject<List<Object>> subject = BehaviorSubject<List<Object>>(seedValue: List());
+
+  RelatedTabViewModel() {
+    subject.add(data);
+  }
+
+  void favorite(int index) {
+    RelatedItemData item = (data[index] as RelatedItemData);
+    item.isFavorited = !item.isFavorited;
+    subject.add(data);
+  }
+
+  Stream<List<Object>> dataStream() {
+    return subject.stream;
+  }
+}
+
+class RelatedTabViewModelProvider extends InheritedWidget {
+
+  final RelatedTabViewModel relatedTabViewModel;
+
+  RelatedTabViewModelProvider({
+    Key key,
+    RelatedTabViewModel relatedTabViewModel,
+    Widget child,
+  })  : relatedTabViewModel = relatedTabViewModel ?? RelatedTabViewModel(),
+        super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(InheritedWidget oldWidget) => true;
+
+  static RelatedTabViewModel of(BuildContext context) =>
+      (context.inheritFromWidgetOfExactType(RelatedTabViewModelProvider) as RelatedTabViewModelProvider)
+          .relatedTabViewModel;
 
 }
 

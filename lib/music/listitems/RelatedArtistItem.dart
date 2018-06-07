@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:iheart_festival/common/HeartButton.dart';
+import 'package:iheart_festival/music/RelatedTabViewModel.dart';
 import 'package:iheart_festival/music/data/RelatedData.dart';
 
 
 class RelatedArtistItem extends StatelessWidget {
 
   final RelatedItemData data;
+  final int index;
 
-  RelatedArtistItem(this.data);
+  RelatedArtistItem(this.data, this.index);
 
   @override
   Widget build(BuildContext context) {
+    final RelatedTabViewModel model = RelatedTabViewModelProvider.of(context);
     return new Column(
       children: <Widget>[
         Row(
@@ -40,14 +44,12 @@ class RelatedArtistItem extends StatelessWidget {
             ),
             new Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: IconButton(
-                icon: Icon(
-                  data.isFavorited ? Icons.favorite : Icons.favorite_border,
-                  color: data.isFavorited ? Colors.pink : Colors.grey),
+              child: HeartButton(
+                isFavorited: data.isFavorited,
                 onPressed: (){
-
-                },
-              ),
+                  model.favorite(index);
+                }
+              )
             ),
           ],
         ),
@@ -57,3 +59,4 @@ class RelatedArtistItem extends StatelessWidget {
   }
 
 }
+
