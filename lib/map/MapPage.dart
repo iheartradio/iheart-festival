@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/common/Gradients.dart';
+import 'package:iheart_festival/common/StatusBar.dart';
 import 'package:iheart_festival/map/MapSubPage.dart';
 import 'package:iheart_festival/schedule/SchedulePage.dart';
 import 'package:zoomable_image/zoomable_image.dart';
@@ -84,14 +85,7 @@ class _MapPageState extends State<MapPage> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: new Column(
         children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: PINK
-              )
-            ),
-            height: 24.0,
-          ),
+          StatusBar(),
           TabBar(
             tabs: tabs.map((tab) {
               Color color = tab.index == _tabController.index ? const Color(0xFFFF7676) : Colors.black;

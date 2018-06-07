@@ -32,7 +32,7 @@ class _SearchBarState extends State<SearchBar> {
             ),
             Text(
               "Search Feed",
-              style: TextStyle(color: Colors.grey[400], fontSize: 18.0),
+              style: Theme.of(context).textTheme.title.copyWith(color: Colors.grey[400], fontSize: 18.0),
             ),
 //            Text("HOL"),
 //            new Container(
