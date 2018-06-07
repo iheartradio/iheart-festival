@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iheart_festival/common/HeartButton.dart';
 import 'package:iheart_festival/schedule/ScheduleData.dart';
 
 typedef void TwinValueSetter<T, D>(T value, D value2);
@@ -46,9 +47,8 @@ class ScheduleListItem extends StatelessWidget {
                     backgroundColor: Colors.red,
                     backgroundImage: NetworkImage(data.image),
                   ),
-                  IconButton(
-                    icon: Icon(data.isFavorited ? Icons.favorite : Icons.favorite_border),
-                    color: data.isFavorited ? Colors.pink[400] : Colors.grey,
+                  new HeartButton(
+                    isFavorited: data.isFavorited,
                     onPressed: () {
                       onFavoriteTapped(data);
                     },

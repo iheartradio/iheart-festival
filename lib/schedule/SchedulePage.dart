@@ -14,7 +14,9 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
 
   TabController _tabController;
   ScrollController _scrollViewController;
-  ScheduleViewModel model;
+  ScheduleViewModel modelOne;
+  ScheduleViewModel modelTwo;
+  ScheduleViewModel modelThree;
 
   final List<TabData> tabs = <TabData>[
     TabData("Friday", 0, Colors.black),
@@ -28,7 +30,10 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
     _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(_handleTabSelection);
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
-    model = new ScheduleViewModel();
+
+    modelOne = new ScheduleViewModel(MOCK_DATA_FRI);
+    modelTwo = new ScheduleViewModel(MOCK_DATA_SAT_AM);
+    modelThree = new ScheduleViewModel(MOCK_DATA_SAT_PM);
   }
 
   @override
@@ -83,9 +88,9 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
 
           body: TabBarView(
               children: [
-                TabPage(model.items),
-                TabPage(model.items_sat_am),
-                TabPage(model.items_sat_pm)
+                TabPage(modelOne),
+                TabPage(modelTwo),
+                TabPage(modelThree)
               ],
               controller: _tabController,
           ),

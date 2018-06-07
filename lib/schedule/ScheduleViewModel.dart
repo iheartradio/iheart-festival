@@ -1,15 +1,33 @@
+import 'dart:async';
+
 import 'package:iheart_festival/LocalInfoItemData.dart';
 import 'package:iheart_festival/schedule/ListItem.dart';
 import 'package:iheart_festival/schedule/ScheduleData.dart';
+import 'package:rxdart/rxdart.dart';
 
 class ScheduleViewModel {
 
-  final List<ListItem> items = MOCK_DATA_FRI;
-  final List<ListItem> items_sat_am = MOCK_DATA_SAT_AM;
-  final List<ListItem> items_sat_pm = MOCK_DATA_SAT_PM;
+  List<Object> _items;
+  final BehaviorSubject<List<Object>> _subject = BehaviorSubject<List<Object>>(seedValue: List());
+
+  ScheduleViewModel(List<Object> items) {
+    _items = items;
+   _subject.add(_items);
+  }
+
+  void favorite(int index) {
+   ArtistScheduleData item = (_items[index] as ArtistScheduleData);
+   item.isFavorited = !item.isFavorited;
+   _subject.add(_items);
+  }
+
+  Stream<List<Object>> dataStream() {
+   return _subject.stream;
+  }
+
 }
 
-const List<ListItem> MOCK_DATA_FRI = [
+List<Object> MOCK_DATA_FRI = [
 
  LocalInfoItemData("09/22", "Daytime Stage", "Las Vegas Festival Grounds"),
 
@@ -65,7 +83,7 @@ const List<ListItem> MOCK_DATA_FRI = [
       true),
 ];
 
-const List<ListItem> MOCK_DATA_SAT_AM = [
+List<ListItem> MOCK_DATA_SAT_AM = [
 
  LocalInfoItemData("09/23", "Daytime Stage", "Las Vegas Festival Grounds"),
 
@@ -128,7 +146,7 @@ const List<ListItem> MOCK_DATA_SAT_AM = [
 ];
 
 
-const List<ListItem> MOCK_DATA_SAT_PM = [
+List<ListItem> MOCK_DATA_SAT_PM = [
 
  LocalInfoItemData("09/23", "Main Stage", "iHeartRadio Arena"),
 

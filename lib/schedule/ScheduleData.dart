@@ -17,12 +17,12 @@ class InfoData implements ListItem {
 
 class ArtistScheduleData implements ListItem {
 
-  final String time;
-  final String title;
-  final String description;
-  final String image;
-  final bool isFavorited;
+  String time;
+  String title;
+  String description;
+  String image;
+  bool isFavorited;
 
-  const ArtistScheduleData(this.time, this.title, this.description, this.image, this.isFavorited);
+  ArtistScheduleData(this.time, this.title, this.description, this.image, this.isFavorited);
 
 }
