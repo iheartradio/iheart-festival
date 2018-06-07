@@ -9,6 +9,8 @@ class RelatedTabViewModel {
 
 List<Object> _MOCK_DATA = [
 
+  RelatedHeader(),
+
   RelatedItemData(
     "Anne-Marie",
     "Pop, Contemporary R&B",
@@ -45,5 +47,4 @@ List<Object> _MOCK_DATA = [
       "astrids.jpeg",
       false
   )
-
 ];

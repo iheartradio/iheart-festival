@@ -10,3 +10,7 @@ class RelatedItemData {
   RelatedItemData(this.title, this.subtitle, this.image, this.isFavorited);
 
 }
+
+class RelatedHeader {
+  RelatedHeader();
+}
