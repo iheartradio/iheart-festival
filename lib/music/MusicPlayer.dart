@@ -87,7 +87,7 @@ class _MusicPlayerPageState extends State<MusicPlayerPage> {
         Padding(
           padding: const EdgeInsets.only(top: 4.0, left: 12.0),
           child: Text(
-            "No Tears Left To Cry * Ariana Grande",
+            "No Tears Left To Cry \u2022 Ariana Grande",
             style: Theme.of(context).textTheme.caption.copyWith(color: Colors.grey),
           ),
         ),
