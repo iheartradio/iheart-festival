@@ -6,9 +6,7 @@ class HeartButton extends StatefulWidget {
   VoidCallback onPressed;
   bool isFavorited;
 
-  HeartButton({this.isFavorited, this.onPressed}) {
-    print("isFavorite from heart: $isFavorited");
-  }
+  HeartButton({this.isFavorited, this.onPressed});
 
   @override
   State<StatefulWidget> createState() => _HeartButtonState();
@@ -46,7 +44,7 @@ class _HeartButtonState extends State<HeartButton> with TickerProviderStateMixin
         turns: spinAnimation,
         child: Icon(
             widget.isFavorited ? Icons.favorite : Icons.favorite_border,
-            color: widget.isFavorited ? Colors.pink : Colors.grey),
+            color: widget.isFavorited ? Colors.pink[400] : Colors.grey),
       ),
       onPressed: () {
         if (isSelected) {

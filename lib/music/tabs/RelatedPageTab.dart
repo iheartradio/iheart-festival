@@ -26,29 +26,33 @@ class _RelatedPageTabState extends State<RelatedPageTab> {
         child: new StreamBuilder(
           stream: model.dataStream(),
           builder: (context, snapshot) {
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, index) {
-                var itemData = snapshot.data[index];
-                if (itemData is RelatedItemData) {
-                  return RelatedArtistItem(itemData, index);
-                } else {
-                  return Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text("Related Artists",
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .title
-                            .copyWith(
-                            color: const Color(0xFFFF7676),
-                            fontSize: 18.0
-                        )
-                    ),
-                  );
-                }
-              },
-            );
+            if (!snapshot.hasData) {
+              return Center(child: CircularProgressIndicator(),);
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index) {
+                  var itemData = snapshot.data[index];
+                  if (itemData is RelatedItemData) {
+                    return RelatedArtistItem(itemData, index);
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text("Related Artists",
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .title
+                              .copyWith(
+                              color: const Color(0xFFFF7676),
+                              fontSize: 18.0
+                          )
+                      ),
+                    );
+                  }
+                },
+              );
+            }
           },
         ),
       ),

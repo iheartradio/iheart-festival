@@ -9,43 +9,49 @@ import 'package:iheart_festival/schedule/schedule_list_item.dart';
 
 class TabPage extends StatefulWidget {
 
-  final List<ListItem> items;
+  final ScheduleViewModel model;
 
-  TabPage(this.items);
+  TabPage(this.model);
 
   @override
-  State<StatefulWidget> createState() => _TabPageState(items);
+  State<StatefulWidget> createState() => _TabPageState();
 }
 
 class _TabPageState extends State<TabPage> {
 
-  final List<ListItem> items;
-
-  _TabPageState(this.items);
-
   @override
   Widget build(BuildContext context) {
-      return ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-          final item = items[index];
+      return new StreamBuilder<List<Object>>(
+        stream: widget.model.dataStream(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index) {
+                  final item = snapshot.data[index];
+                  if (item is LocalInfoItemData) {
+                    return LocalInfoItem(item);
+                  } else if (item is InfoData) {
+                    return LocalInfoItemSimple(item);
+                  } else if(item is ArtistScheduleData) {
+                    return ScheduleListItem(
+                      onItemTapped: (data) {
 
-            if (item is LocalInfoItemData) {
-              return LocalInfoItem(items[index]);
-            } else if (item is InfoData) {
-              return LocalInfoItemSimple(items[index]);
-            } else if(item is ArtistScheduleData) {
-              return ScheduleListItem(
-                onItemTapped: (data) {
-
-                },
-                onFavoriteTapped: (data) {
-
-                },
-                data: items[index],
-              );
-            }
+                      },
+                      onFavoriteTapped: (data) {
+                        widget.model.favorite(index);
+                      },
+                      data: item,
+                    );
+                  }
+                }
+            );
           }
+        },
       );
   }
 }
