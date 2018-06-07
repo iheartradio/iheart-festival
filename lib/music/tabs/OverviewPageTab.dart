@@ -1,6 +1,6 @@
 
-
 import 'package:flutter/material.dart';
+import 'package:iheart_festival/music/AlbumListItem.dart';
 import 'package:iheart_festival/music/HeaderItem.dart';
 import 'package:iheart_festival/music/LatestReleaseItem.dart';
 import 'package:iheart_festival/music/SongListItem.dart';
@@ -25,6 +25,29 @@ class _OverviewPageState extends State<OverviewPageTab> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final item = items[index];
+
+          if (item is LatestReleaseData) {
+            return LatestReleaseItem(items[index]);
+
+          } else if (item is SongsHeaderData) {
+            return HeaderItem(items[index]);
+
+          } else if (item is SongListItemData) {
+            return SongListItem(items[index]);
+          } else if (item is AlbumData) {
+            return AlbumListItem(items[index]);
+          }
+        }
+    );
+  }
+}
+
+/*
+return ListView.builder(
+
       itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];
@@ -38,11 +61,9 @@ class _OverviewPageState extends State<OverviewPageTab> {
           } else if (item is SongListItemData) {
             return SongListItem(items[index]);
 
-          } else if (item is AlbumData){
+          } else if (item is AlbumData) {
 
           }
         }
     );
-  }
-
-}
+ */

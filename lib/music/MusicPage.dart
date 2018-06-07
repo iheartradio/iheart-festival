@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/music/MusicPlayer.dart';
 import 'package:iheart_festival/music/OverviewViewModel.dart';
+import 'package:iheart_festival/music/tabs/AboutPageTab.dart';
 import 'package:iheart_festival/music/tabs/OverviewPageTab.dart';
 import 'package:iheart_festival/music/tabs/RelatedPageTab.dart';
 import 'package:iheart_festival/schedule/SchedulePage.dart';
@@ -84,8 +85,8 @@ class _MusicPageState extends State<MusicPage> with SingleTickerProviderStateMix
           }, body: TabBarView(
         children: [
           OverviewPageTab(model.items),
-          Placeholder(),
-          RelatedPageTab()
+          RelatedPageTab(),
+          AboutPageTab(model.aboutItems),
         ],
         controller: _tabController,
       )
