@@ -65,7 +65,7 @@ class _MusicPageState extends State<MusicPage> with SingleTickerProviderStateMix
             return <Widget>[
               SliverAppBar(
                 leading: Container(),
-                expandedHeight: 250.0,
+                expandedHeight: 420.0,
                 backgroundColor: Colors.white,
                 pinned: true,
                 floating: true,
