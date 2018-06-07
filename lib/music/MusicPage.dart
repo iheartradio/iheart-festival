@@ -85,8 +85,8 @@ class _MusicPageState extends State<MusicPage> with SingleTickerProviderStateMix
           }, body: TabBarView(
         children: [
           OverviewPageTab(model.items),
-          RelatedPageTab(),
           AboutPageTab(model.aboutItems),
+          RelatedPageTab()
         ],
         controller: _tabController,
       )
