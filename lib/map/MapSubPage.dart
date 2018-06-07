@@ -72,6 +72,7 @@ class _MapSubPageState extends State<MapSubPage> with SingleTickerProviderStateM
           AssetImage("map.png"),
           maxScale: 0.5,
           backgroundColor: const Color(0xF5F5F5),
+          placeholder: new Center(child: Icon(Icons.map)),
         ),
         Positioned(
           left: 16.0,
