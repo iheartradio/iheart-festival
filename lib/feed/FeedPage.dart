@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:iheart_festival/common/StatusBar.dart';
 import 'package:iheart_festival/feed/FeedFilterItem.dart';
 import 'package:iheart_festival/feed/FeedViewModel.dart';
 import 'package:iheart_festival/feed/SearchBar.dart';
 import 'package:iheart_festival/feed/TwitterItem.dart';
 
-
 class FeedPage extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() => _FeedPageState();
-
 }
 
 class _FeedPageState extends State<FeedPage> {
-
   FeedViewModel model;
 
   @override
@@ -24,15 +21,13 @@ class _FeedPageState extends State<FeedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          SizedBox(height: 24.0,),
-          SearchBar(),
-          _buildFilterList(context),
-          _buildFeedList(context)
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        StatusBar(),
+        SearchBar(),
+        _buildFilterList(context),
+        _buildFeedList(context)
+      ],
     );
   }
 
@@ -51,8 +46,7 @@ class _FeedPageState extends State<FeedPage> {
             FeedFilterItem("#bazzi", Color(0xFFF54EA2)),
             FeedFilterItem("#rebellyus", Color(0xFFFF7676)),
           ],
-        )
-    );
+        ));
   }
 
   Widget _buildFeedList(BuildContext context) {
@@ -65,5 +59,4 @@ class _FeedPageState extends State<FeedPage> {
       ),
     );
   }
-
 }
