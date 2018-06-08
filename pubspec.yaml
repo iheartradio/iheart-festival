@@ -83,6 +83,7 @@ flutter:
     - dualipa_004.png
     - dualipa_005.png
     - dualipa_006.png
+    - MusicFest-logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

@@ -55,8 +55,19 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
 
   void _handleTabSelection() {
     setState(() {
+
     });
   }
+
+  String _getStateBackground() {
+    if (_tabController.index == 1) {
+      return "daytime_stage-logo.png";
+    } else {
+      return "MusicFest-logo.png";
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +82,7 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
                 expandedHeight: 250.0,
                 pinned: true,
                 floating: true,
-                flexibleSpace: FlexibleScheduleHeader(),
+                flexibleSpace: FlexibleScheduleHeader(_getStateBackground()),
                 forceElevated: boxIsScrolled,
                 bottom: CustomTab(tabs, _tabController),
               )

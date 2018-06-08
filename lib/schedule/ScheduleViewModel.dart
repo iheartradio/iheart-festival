@@ -162,7 +162,7 @@ List<ListItem> MOCK_DATA_SAT_PM = [
      "11:20AM",
      "Carrie Underwood",
      "Pop",
-     "https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/Carrie_Underwood_Album_Six_Promotional_photo.jpg/220px-Carrie_Underwood_Album_Six_Promotional_photo.jpg",
+     "http://cdn02.cdn.justjared.com/wp-content/uploads/headlines/2017/11/carrie-underwood-hospital-wrist-break.jpg",
      false),
  ArtistScheduleData(
      "11:45AM",
