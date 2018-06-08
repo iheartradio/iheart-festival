@@ -4,19 +4,23 @@ import 'package:iheart_festival/schedule/FlexibleScheduleHeader.dart';
 import 'package:iheart_festival/schedule/ScheduleViewModel.dart';
 import 'package:iheart_festival/schedule/tabs/TabPage.dart';
 
-class SchedulePage extends StatefulWidget {
-
-  @override
-  State<StatefulWidget> createState() => _SchedulePageState();
-
-}
-
 class TabData {
   final String label;
   final Color color;
   int index;
 
   TabData(this.label, this.index, this.color);
+
+}
+
+class SchedulePage extends StatefulWidget {
+
+  VoidCallback onNavigate;
+
+  SchedulePage(this.onNavigate);
+
+  @override
+  State<StatefulWidget> createState() => _SchedulePageState();
 
 }
 
@@ -67,8 +71,6 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,14 +95,14 @@ class _SchedulePageState extends State<SchedulePage> with SingleTickerProviderSt
               children: [
                 Container(
                   color: Colors.white,
-                  child: TabPage(modelOne)
+                  child: TabPage(modelOne, widget.onNavigate)
                 ),
                 Container(
                   color: Colors.white,
-                    child: TabPage(modelTwo)),
+                    child: TabPage(modelTwo, widget.onNavigate)),
                 Container(
                   color: Colors.white,
-                  child: TabPage(modelThree))
+                  child: TabPage(modelThree, widget.onNavigate))
               ],
               controller: _tabController,
           ),

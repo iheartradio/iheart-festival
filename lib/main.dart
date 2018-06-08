@@ -20,7 +20,7 @@ class FestivalApp extends StatefulWidget {
 }
 
 class _FestivalAppState extends State<FestivalApp> with TickerProviderStateMixin {
-  final navigatorKey = GlobalKey<NavigatorState>();
+   final navigatorKey = GlobalKey<NavigatorState>();
 
   int _currentIndex = 0;
 
@@ -31,7 +31,9 @@ class _FestivalAppState extends State<FestivalApp> with TickerProviderStateMixin
     "/": () => AnimatedPageRoute(
           transition: (anim, child) => child,
           builder: (context) => Center(
-                child: SchedulePage(),
+                child: SchedulePage((){
+
+                }),
               ),
         ),
     "map": () => AnimatedPageRoute(
@@ -91,12 +93,13 @@ class _FestivalAppState extends State<FestivalApp> with TickerProviderStateMixin
         bottomNavigationBar: BottomNavBar(
           _currentIndex,
           (index) {
-            print("Current index; $_currentIndex");
-            navigatorKey.currentState
-                .pushNamed(pagesRouteFactories.keys.toList()[index]);
-            setState(() {
-              _currentIndex = index;
-            });
+            navigate(index);
+//            print("Current index; $_currentIndex");
+//            navigatorKey.currentState
+//                .pushNamed(pagesRouteFactories.keys.toList()[index]);
+//            setState(() {
+//              _currentIndex = index;
+//            });
           }
         ),
         floatingActionButton: FABCircle(
@@ -114,13 +117,17 @@ class _FestivalAppState extends State<FestivalApp> with TickerProviderStateMixin
     );
   }
 
+  void navigate(int index) {
+    print("Current index; $_currentIndex");
+    navigatorKey.currentState
+        .pushNamed(pagesRouteFactories.keys.toList()[index]);
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   Widget _buildBody() => MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
       onGenerateRoute: (route) => pagesRouteFactories[route.name]());
-
-  BottomNavigationBarItem _buildBottomNavigationBarItem(name, icon) {
-    return BottomNavigationBarItem(
-        icon: Icon(icon), title: Text(name), backgroundColor: Colors.red);
-  }
 }
