@@ -60,7 +60,9 @@ class FABCircle extends StatelessWidget {
             ],
         ),
         onPressed: () {
-          onTap(4);
+          if (currentIndex != 4) {
+            onTap(4);
+          }
         },
       ),
     );

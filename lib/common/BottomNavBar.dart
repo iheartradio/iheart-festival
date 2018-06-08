@@ -60,7 +60,9 @@ class BottomNavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return new GestureDetector(
       onTap: () {
-        onTap(index);
+        if (!isSelected) {
+          onTap(index);
+        }
       },
       child: new Padding(
         padding: const EdgeInsets.all(8.0),
