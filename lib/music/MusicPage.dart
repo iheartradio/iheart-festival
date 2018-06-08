@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iheart_festival/common/CustomTab.dart';
+import 'package:iheart_festival/common/GradientAppBar.dart';
 import 'package:iheart_festival/music/MusicPlayer.dart';
 import 'package:iheart_festival/music/MusicViewModel.dart';
 import 'package:iheart_festival/music/tabs/AboutPageTab.dart';
@@ -50,10 +51,10 @@ class _MusicPageState extends State<MusicPage> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        leading: Container(),
-        title: Text("iHeartRadio Festival Artists"),
+      appBar: PreferredSize(
+          child: GradientAppBar(title: "iHeartRadio Festival Artists"),
+          preferredSize: Size(MediaQuery.of(context).size.width, 50.0)
+
       ),
       body: NestedScrollView(
         controller: _scrollController,
