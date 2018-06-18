@@ -12,7 +12,7 @@ class FlexibleScheduleHeader extends StatelessWidget {
       background: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          Image.asset("background.png",fit: BoxFit.cover),
+          Image.asset("background_img.png",fit: BoxFit.cover),
           Padding(
             padding: const EdgeInsets.all(48.0),
             child: Image.asset(stageBackground, width: 200.0, height: 200.0,),
